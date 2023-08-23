@@ -132,7 +132,7 @@ namespace pexeso
 
             if (AllPairsAreFound())
             {
-                DialogResult result = MessageBox.Show("YOU WON! Do you want to play again?", "GAME OVER", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("YOU WON! Do you want to play again?", "CONGRATULATIONS", MessageBoxButtons.YesNo);
                 
             if (result == DialogResult.Yes)
                 {
