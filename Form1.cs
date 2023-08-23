@@ -17,6 +17,11 @@ namespace pexeso
         public Form1()
         {
             InitializeComponent();
+            CenterPanel(panelChooseCards);
+            CenterPanel(panelLetsPlay);
+            CenterPanel(PanelGame);
+            this.Resize += Form1_Resize;
+            StartPosition = FormStartPosition.CenterScreen;
             timer1.Tick += timer1_Tick;
             timer1.Interval = 650;
 
@@ -178,6 +183,19 @@ namespace pexeso
         {
 
         }
+        private void CenterPanel(Panel panel)
+        {
+            panel.Left = (this.ClientSize.Width - panel.Width) / 2;
+            panel.Top = (this.ClientSize.Height - panel.Height) / 2;
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            CenterPanel(panelChooseCards);
+            CenterPanel(panelLetsPlay);
+            CenterPanel(PanelGame);
+        }
+
     }
 
     public class CardInfo
