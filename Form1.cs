@@ -115,19 +115,36 @@ namespace pexeso
             if (firstCard == null)
             {
                 firstCard = clickedCard;
+                firstCard.Enabled = false;
             }
             else
             {
                 secondCard = clickedCard;
 
+                foreach (var card in cards)
+                {
+                    if (!((CardInfo)card.Tag).IsMatched)
+                    {
+                        card.Enabled = false;
+                    }
+                }
+
                 if (((CardInfo)firstCard.Tag).Value == ((CardInfo)secondCard.Tag).Value)
                 {
-                    firstCard.BackColor = Color.Green;
-                    secondCard.BackColor = Color.Green;
+                    firstCard.BackColor = Color.LightGreen;
+                    secondCard.BackColor = Color.LightGreen;
                     ((CardInfo)firstCard.Tag).IsMatched = true;
                     ((CardInfo)secondCard.Tag).IsMatched = true;
                     firstCard = null;
                     secondCard = null;
+
+                    foreach (var card in cards)
+                    {
+                        if (!((CardInfo)card.Tag).IsMatched)
+                        {
+                            card.Enabled = true;
+                        }
+                    }
                 }
                 else
                 {
@@ -148,14 +165,27 @@ namespace pexeso
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            firstCard.BackgroundImage = null;
-            secondCard.BackgroundImage = null;
-            firstCard.BackColor = Color.LightPink;
-            secondCard.BackColor = Color.LightPink;
+            if (firstCard != null && secondCard != null)
+            {
+                firstCard.BackgroundImage = null;
+                secondCard.BackgroundImage = null;
+                firstCard.BackColor = Color.LightPink;
+                secondCard.BackColor = Color.LightPink;
+            }
+
             firstCard = null;
             secondCard = null;
+
+            foreach (var card in cards)
+            {
+                if (!((CardInfo)card.Tag).IsMatched)
+                { 
+                    card.Enabled = true;
+                } 
+            }
             timer1.Stop();
         }
+
 
         private void restartGameButton_Click (object sender, EventArgs e)
         {
