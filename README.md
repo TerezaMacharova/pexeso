@@ -1,5 +1,7 @@
-Pexeso na cvicenie programovanie 2 Michala Topfera.
+Pexeso na cvicenie programovanie 2.
 
+
+## Zadanie
 Naprogramujte Pexeso ve WinForms nebo jiném UI frameworku pro C# (např. Avalonia UI).
 
 Požadované vlastnosti:
